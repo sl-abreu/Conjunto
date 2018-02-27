@@ -13,6 +13,7 @@ import java.util.Iterator;
  * @param <T>
  */
 public interface ConjuntoADT<T> extends Iterable<T> {
+    public int getCardinalidad();
     @Override
     public Iterator<T> iterator();
     public boolean contiene(T dato);
