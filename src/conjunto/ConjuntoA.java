@@ -27,7 +27,15 @@ public class ConjuntoA<T> implements ConjuntoADT<T> {
     }
     @Override
     public boolean agrega(T dato){
+        boolean res=contiene(dato);
         
+        if(!res){
+            if(cardinalidad==conjunto.length)
+                expandCapacity();
+            conjunto[cardinalidad]=dato;
+            cardinalidad++;
+        }
+        return res;
     }
     @Override
     public T quita(T dato){
@@ -62,5 +70,74 @@ public class ConjuntoA<T> implements ConjuntoADT<T> {
         while(i<cardinalidad && !conjunto[i].equals(dato))
             i++;
         return i;
+    }
+    private void expandCapacity() {
+        T[] nuevo=(T[]) new Object[conjunto.length*2];
+        
+        for(int i=0;i<cardinalidad;i++)
+            nuevo[i]=conjunto[i];
+        conjunto=nuevo;
+    }
+
+    @Override
+    public ConjuntoADT<T> interseccion(ConjuntoADT<T> otro) {
+        if(otro!=null){
+            ConjuntoADT<T> res=new ConjuntoA();
+        
+            if(this.cardinalidad<=otro.getCardinalidad()){
+                for(int i=0;i<cardinalidad;i++)
+                    if(otro.contiene(conjunto[i]))
+                        res.agrega(conjunto[i]);
+            }
+            else{
+                Iterator<T> it=otro.iterator();
+                T aux;
+            
+                while(it.hasNext()){
+                    aux=it.next();
+                    if(this.contiene(aux))
+                        res.agrega(aux);
+                }
+            }
+            return res;
+        }
+        throw new NullPointerException();
+    }
+    @Override
+    public ConjuntoADT<T> union(ConjuntoADT<T> otro) {
+        if(otro!=null){
+            ConjuntoADT<T> res=new ConjuntoA();
+            Iterator<T> it=otro.iterator();
+        
+            for(int i=0;i<cardinalidad;i++)
+                res.agrega(conjunto[i]);
+            while(it.hasNext())
+                res.agrega(it.next());
+            return res;
+        }
+        throw new NullPointerException();
+    }
+    @Override
+    public ConjuntoADT<T> diferencia(ConjuntoADT<T> otro){
+        if(otro!=null){
+            ConjuntoADT<T> res=new ConjuntoA();
+            Iterator<T> it=otro.iterator();
+        
+            for(int i=0;i<cardinalidad;i++)
+                res.agrega(conjunto[i]);
+            while(it.hasNext())
+                res.quita(it.next());
+            return res;
+        }
+        throw new NullPointerException();
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder cad=new StringBuilder();
+        
+        for(int i=0;i<cardinalidad;i++)
+            cad.append(conjunto[i].toString()).append("\n");
+        return cad.toString();
     }
 }
