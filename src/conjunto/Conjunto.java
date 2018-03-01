@@ -43,16 +43,16 @@ public class Conjunto {
         c4.agrega("blanco");
         c4.agrega("azul");
         
-        System.out.println(imprimeConj(c1));
-        System.out.println(imprimeConj(c2));
-        System.out.println(imprimeConj(c3));
-        System.out.println(imprimeConj(c4));
+        System.out.println(c1);
+        System.out.println(c2);
+        System.out.println(c3);
+        System.out.println(c4);
         
-        System.out.println(imprimeConj(c2.interseccion(c1)));
-        System.out.println(imprimeConj(c2.union(c1)));
+        System.out.println(c2.interseccion(c1));
+        System.out.println(c2.union(c1));
         
-        System.out.println(imprimeConj(c3.interseccion(c4)));
-        System.out.println(imprimeConj(c4.union(c3)));
+        System.out.println(c3.interseccion(c4));
+        System.out.println(c4.union(c3));
         
         System.out.println(c2.diferencia(c1).toString());
         System.out.println(c3.diferencia(c4).toString());

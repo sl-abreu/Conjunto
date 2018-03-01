@@ -121,12 +121,10 @@ public class ConjuntoA<T> implements ConjuntoADT<T> {
     public ConjuntoADT<T> diferencia(ConjuntoADT<T> otro){
         if(otro!=null){
             ConjuntoADT<T> res=new ConjuntoA();
-            Iterator<T> it=otro.iterator();
-        
+            
             for(int i=0;i<cardinalidad;i++)
-                res.agrega(conjunto[i]);
-            while(it.hasNext())
-                res.quita(it.next());
+                if(!otro.contiene(conjunto[i]))
+                    res.agrega(conjunto[i]);
             return res;
         }
         throw new NullPointerException();
@@ -137,7 +135,7 @@ public class ConjuntoA<T> implements ConjuntoADT<T> {
         StringBuilder cad=new StringBuilder();
         
         for(int i=0;i<cardinalidad;i++)
-            cad.append(conjunto[i].toString()).append("\n");
-        return cad.toString();
+            cad.append(conjunto[i].toString()).append("\t");
+        return cad.toString()+"\n";
     }
 }
