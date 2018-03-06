@@ -129,6 +129,9 @@ public class ConjuntoA<T> implements ConjuntoADT<T> {
         }
         throw new NullPointerException();
     }
+//    public ConjuntoADT<T> diferenciaSimetrica(ConjuntoADT<T> otro){
+//        pp 16
+//    }
     
     @Override
     public String toString(){
