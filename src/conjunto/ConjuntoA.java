@@ -141,4 +141,20 @@ public class ConjuntoA<T> implements ConjuntoADT<T> {
             cad.append(conjunto[i].toString()).append("\t");
         return cad.toString()+"\n";
     }
+    
+    @Override
+    public boolean equals(Object otro){
+        boolean res=false;
+        
+        if(this==otro)
+            res=true;
+        else if(otro!=null && otro instanceof ConjuntoADT && ((ConjuntoADT)otro).getCardinalidad()==this.cardinalidad){
+            int i=0;
+              
+            while(i<cardinalidad && ((ConjuntoADT)otro).contiene(conjunto[i]))
+                i++;
+            res=i==cardinalidad;
+        }
+        return res;
+    }
 }

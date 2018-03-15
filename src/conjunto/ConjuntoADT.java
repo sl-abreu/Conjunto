@@ -24,4 +24,6 @@ public interface ConjuntoADT<T> extends Iterable<T> {
     public ConjuntoADT<T> diferencia(ConjuntoADT<T> otro);
     @Override
     public String toString();
+    @Override
+    public boolean equals(Object otro);
 }

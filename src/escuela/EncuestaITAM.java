@@ -28,8 +28,8 @@ public class EncuestaITAM {
         ConjuntoA<String> eng=new ConjuntoA(),fra=new ConjuntoA(),otro=new ConjuntoA();
         String[] nom={"Rusell","Erwino","Alberto","Isaac"};
         
-        for(int i=0;i<nom.length;i++)
-            eng.agrega(nom[i]);
+        for (String nom1 : nom)
+            eng.agrega(nom1);
         fra.agrega("Rusell");
         fra.agrega("Alberto");
         otro.agrega("Alberto");
