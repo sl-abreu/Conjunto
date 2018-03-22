@@ -79,6 +79,28 @@ public class ConjuntoA<T> implements ConjuntoADT<T> {
         conjunto=nuevo;
     }
 
+    //prácticas de recursión
+    public ConjuntoADT<T> unionR(ConjuntoADT<T> otro){
+        if(otro!=null){
+            ConjuntoADT<T> res=new ConjuntoA();
+            Iterator<T> it=otro.iterator();
+            
+            unionR(res,it,0);
+            return res;
+        }
+        throw new NullPointerException();
+    }
+    private void unionR(ConjuntoADT<T> res, Iterator<T> it,int i){
+        if(i<cardinalidad){
+            res.agrega(conjunto[i]);
+            unionR(res,it,i+1);
+        }
+        else if(it.hasNext()){
+            res.agrega(it.next());
+            unionR(res,it,i);
+        }
+    }
+    
     @Override
     public ConjuntoADT<T> interseccion(ConjuntoADT<T> otro) {
         if(otro!=null){

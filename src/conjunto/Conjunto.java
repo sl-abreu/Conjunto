@@ -27,10 +27,10 @@ public class Conjunto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ConjuntoADT<Integer> c1=new ConjuntoA();
-        ConjuntoADT<Integer> c2=new ConjuntoA();
-        ConjuntoADT<String> c3=new ConjuntoA();
-        ConjuntoADT<String> c4=new ConjuntoA();
+        ConjuntoA<Integer> c1=new ConjuntoA();
+        ConjuntoA<Integer> c2=new ConjuntoA();
+        ConjuntoA<String> c3=new ConjuntoA();
+        ConjuntoA<String> c4=new ConjuntoA();
         
         int i;
         for(i=1;i<=10;i++)
@@ -48,14 +48,14 @@ public class Conjunto {
         System.out.println(c3);
         System.out.println(c4);
         
-        System.out.println(c2.interseccion(c1));
-        System.out.println(c2.union(c1));
+        //System.out.println(c2.interseccion(c1));
+        System.out.println(c2.unionR(c1));
         
-        System.out.println(c3.interseccion(c4));
-        System.out.println(c4.union(c3));
+        //System.out.println(c3.interseccion(c4));
+        System.out.println(c4.unionR(c3));
         
-        System.out.println(c2.diferencia(c1).toString());
-        System.out.println(c3.diferencia(c4).toString());
+//        System.out.println(c2.diferencia(c1).toString());
+//        System.out.println(c3.diferencia(c4).toString());
     }
     
 }
