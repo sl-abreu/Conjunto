@@ -14,6 +14,7 @@ import java.util.Iterator;
 public class Conjunto {
 
     
+    
     public static <T> String imprimeConj(ConjuntoADT<T> c){
         StringBuilder cad=new StringBuilder();
         Iterator<T> it=c.iterator();
